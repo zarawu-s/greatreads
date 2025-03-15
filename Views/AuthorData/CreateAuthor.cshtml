@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.Author
+
+@{
+    ViewBag.Title = "Create Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div>
+        <form action="SaveAuthor" method="post">
+            <label>Author ID</label>
+            <input type="text" name="id_author" placeholder="id_author" />
+            <br />
+            <label>Name and Surname</label>
+            <input type="text" name="name_surname" placeholder="name_surname" />
+            <br />
+            <label>Date of Birth</label>
+            <input type="date" name="date_of_birth" placeholder="date_of_birth" />
+            <br />
+            <label>Date of Death</label>
+            <input type="date" name="date_of_death" placeholder="date_of_death" />
+            <br />
+            <label>Country</label>
+            <input type="text" name="country" placeholder="country" />
+            <br />
+            <label>Biography</label>
+            <input type="text" name="biography" placeholder="biography" />
+            <br />
+            <input type="submit" value="Save Author" />
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <form action="SaveAuthor" method="post">
+            <label hidden="hidden">Author ID</label>
+            <input hidden="hidden" type="text" name="id_author" placeholder="id_author" value="@Model.ID_author"/>
+            <br />
+            <label>Name and Surname</label>
+            <input type="text" name="name_surname" placeholder="name_surname" value="@Model.Name_Surname" />
+            <br />
+            <label>Date of Birth</label>
+            <input type="text" name="date_of_birth" placeholder="date_of_birth" value="@Model.Date_of_birth" />
+            <br />
+            <label>Date of Death</label>
+            <input type="date" name="date_of_death" placeholder="date_of_death" value="@Model.Date_of_death" />
+            <br />
+            <label>Country</label>
+            <input type="text" name="country" placeholder="country" value="@Model.Country" />
+            <br />
+            <label>Number of Books</label>
+            <input type="text" name="number_of_books" placeholder="number_of_books" value="@Model.Number_of_books" />
+            <br />
+            <label>Rating</label>
+            <input type="text" name="rating" placeholder="rating" value="@Model.Rating" />
+            <br />
+            <label>Biography</label>
+            <input type="text" name="biography" placeholder="biography" value="@Model.Biography" />
+            <br />
+            <input type="submit" value="Save Author"/>
+        </form>
+    </div>
+}
