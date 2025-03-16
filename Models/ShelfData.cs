@@ -17,6 +17,7 @@ namespace greatreads.Models
     {
         public List<Shelf> Shelves = new List<Shelf>();
         public int ID_book;
+
         public ShelfData()
         {
             try
@@ -40,6 +41,35 @@ namespace greatreads.Models
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        public ShelfData(int id_user)
+        {
+            try
+            {
+                var cluster = Cluster.Builder().AddContactPoint("127.0.0.1").Build();
+                using var session = cluster.Connect("greatreads");
+                var ids = session.Execute("select id_shelf from usershelves where id_user=" + id_user+ ";");
+                Shelf tmpObj = null;
+
+                foreach (var id in ids)
+                {
+                    var shelves = session.Execute("select * from shelf where id_shelf=" + id.GetValue<int>(0) + ";");
+                    foreach (var shelf in shelves)
+                    {
+                        tmpObj = new Shelf();
+
+                        tmpObj.ID_shelf = shelf.GetValue<int>("id_shelf");
+                        tmpObj.Name = shelf.GetValue<String>("name");
+                        tmpObj.Number_of_books = shelf.GetValue<int>("number_of_books");
+
+                        Shelves.Add(tmpObj);
+                    }
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

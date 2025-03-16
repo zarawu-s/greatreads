@@ -55,7 +55,7 @@ namespace greatreads.Models
                         tmpBook.Author = book.GetValue<String>("author");
                         tmpBook.Number_of_pages = book.GetValue<int>("number_of_pages");
                         tmpBook.Format = book.GetValue<String>("format");
-                        tmpBook.Year_published = book.GetValue<LocalDate>("year_published");
+                        tmpBook.Date_published = book.GetValue<LocalDate>("date_published");
                         tmpBook.Language = book.GetValue<String>("language");
                         tmpBook.Rating = book.GetValue<float>("rating");
                         tmpBook.Genre = book.GetValue<String>("genre");
@@ -108,7 +108,7 @@ namespace greatreads.Models
                     tmpBook.Author = book.GetValue<String>("author");
                     tmpBook.Number_of_pages = book.GetValue<int>("number_of_pages");
                     tmpBook.Format = book.GetValue<String>("format");
-                    tmpBook.Year_published = book.GetValue<LocalDate>("year_published");
+                    tmpBook.Date_published = book.GetValue<LocalDate>("date_published");
                     tmpBook.Language = book.GetValue<String>("language");
                     tmpBook.Rating = book.GetValue<float>("rating");
                     tmpBook.Genre = book.GetValue<String>("genre");
