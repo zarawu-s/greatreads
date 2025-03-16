@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model greatreads.Models.User
+
+@{
+    ViewData["Title"] = "Create user";
+}
+
+
+@if (Model == null)
+{
+    <div>
+        <form action="SaveUser" method="post">
+            <label>User ID</label>
+            <input type="text" name="id_user" placeholder="id_user" />
+            <br />
+            <label>Email</label>
+            <input type="text" name="email" placeholder="email" />
+            <br />
+            <label>Date of birth</label>
+            <input type="date" name="date_of_birth" placeholder="date_of_birth" />
+            <br />
+            <label>Name and surname</label>
+            <input type="text" name="name_surname" placeholder="name_surname" />
+            <br />
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" />
+            <br />
+            <label>Gender</label>
+            <input type="text" name="gender" placeholder="gender" />
+            <br />
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username" />
+            <br />
+            <input type="submit" value="Save user" />
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <form action="SaveUser" method="post">
+            <label hidden="hidden">User ID</label>
+            <input hidden="hidden" type="text" name="id_user" placeholder="id_user" value="@Model.ID_user" />
+            <br />
+            <label>Email</label>
+            <input type="text" name="email" placeholder="email" value="@Model.Email" />
+            <br />
+            <label>Date of birth</label>
+            <input type="date" name="date_of_birth" placeholder="date_of_birth" value="@Model.Date_of_birth" />
+            <br />
+            <label>Name and surname</label>
+            <input type="text" name="name_surname" placeholder="name_surname" value="@Model.Name_Surname" />
+            <br />
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" value="@Model.Password" />
+            <br />
+            <label>Gender</label>
+            <input type="text" name="gender" placeholder="gender" value="@Model.Gender" />
+            <br />
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username" value="@Model.Username" />
+            <br />
+            <input type="submit" value="Save user" />
+        </form>
+    </div>
+}

@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.AuthorData
+
+@{
+    ViewBag.Title = "List of Authors";
+    Layout = "~Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column;">
+    <h2>List of Authors</h2>
+    <a asp-area="" asp-action="CreateAuthor" asp-controller="AuthorData" style="margin-bottom:50px; max-width:200px;">
+        <button>Add author</button>
+    </a>
+
+    <table border="1" align="left" style="max-width:1600px; text-align:center;">
+        <thead>
+            <tr>
+                <td width="200">Author ID</td>
+                <td width="200">Country</td>
+                <td width="200">Date of birth</td>
+                <td width="200">Date of death</td>
+                <td width="200">Number of books</td>
+                <td width="200">Rating</td>
+                <td width="200"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.Authors)
+            {
+                <tr>
+                    <td>@a.ID_author</td>
+                    <td>@a.Country</td>
+                    <td>@a.Date_of_birth</td>
+                    <td>@a.Date_of_death</td>
+                    <td>@a.Number_of_books</td>
+                    <td>@a.Rating</td>
+                    <td>
+                        <form action="DeleteAuthor" method="post">
+                            <input type="text" name="id_author" placeholder="id_author" value="@a.ID_author" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Delete author" />
+                        </form>
+                        <form action="EditAuthor" method="post">
+                            <input type="text" name="id_author" placeholder="id_author" value="@a.ID_author" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Edit author"/>
+                        </form>
+                        <form action="AddAuthorsBook" method="post">
+                            <input type="text" name="id_author" placeholder="id_author" value="@a.ID_author" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Add book" />
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" align="center"><b>Biography</b></td>
+                </tr>
+                <tr style="text-align:left">
+                    <td colspan="8">@a.Biography</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

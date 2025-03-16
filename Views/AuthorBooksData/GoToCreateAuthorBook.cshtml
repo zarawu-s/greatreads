@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.AuthorBooks
+
+@{
+    ViewBag.Title = "Add book to author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div>
+        <form action="SaveAuthorBook" method="post">
+            <label>Book ID</label>
+            <input type="text" name="id_book" placeholder="id_book" />
+            <br />
+            <label>Author ID</label>
+            <input type="text" name="id_author" placeholder="id_author" />
+            <br />
+            <label>Title</label>
+            <input type="text" name="title" placeholder="title" />
+            <br />
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <form action="SaveAuthorBook" method="post">
+            <label hidden="hidden">Book ID</label>
+            <input hidden="hidden" type="text" name="id_book" placeholder="id_book" value="@Model.ID_book" />
+            <br />
+            <label hidden="hidden">Author ID</label>
+            <input hidden="hidden" type="text" name="id_author" placeholder="id_author" value="@Model.ID_author" />
+            <br />
+            <label>Title</label>
+            <input type="text" name="title" placeholder="title" value="@Model.Title" />
+            <br />
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+}

@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.ShelfBooksData
+
+@{
+    ViewBag.Title = "Library";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column">
+    <h2>Library</h2>
+
+    @foreach (var shelfbooks in Model.Shelves)
+    {
+        <div>
+            <label><b>Shelf ID:</b>@shelfbooks.Shelf.ID_shelf</label>
+            <br />
+            <label><b>Name:</b> @shelfbooks.Shelf.Name</label>
+            <br />
+            <label><b>Number of books:</b> @shelfbooks.Shelf.Number_of_books</label>
+            <br />
+        </div>
+        <div>
+            <table border="1" align="left" style="max-width:2200px; text-align:center;">
+                <thead>
+                    <tr>
+                        <td width="200">Book ID</td>
+                        <td width="200">Title</td>
+                        <td width="200">Original title</td>
+                        <td width="200">Author</td>
+                        <td width="300">Date published</td>
+                        <td width="200">Format</td>
+                        <td width="200">Language</td>
+                        <td width="200">Genre</td>
+                        <td width="200">ISBN</td>
+                        <td width="200">Number of pages</td>
+                        <td width="200">Rating</td>
+                        <td width="200"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in shelfbooks.Books)
+                    {
+                        <tr>
+                            <td>@book.ID_book</td>
+                            <td>@book.Title</td>
+                            <td>@book.Original_title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Date_published</td>
+                            <td>@book.Format</td>
+                            <td>@book.Language</td>
+                            <td>@book.Genre</td>
+                            <td>@book.ISBN</td>
+                            <td>@book.Number_of_pages</td>
+                            <td>@book.Rating</td>
+                            <td>
+                                <form action="RemoveFromShelf" method="post">
+                                    <input type="text" name="id_shelf" placeholder="id_shelf" value="@shelfbooks.Shelf.ID_shelf" hidden="hidden" />
+                                    <input type="text" name="id_book" placeholder="id_book" value="@book.ID_book" hidden="hidden" />
+                                    <input style="width:100%;" type="submit" value="Remove from shelf" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

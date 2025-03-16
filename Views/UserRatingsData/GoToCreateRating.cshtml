@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.UserRatings
+
+@{
+    ViewBag.Title = "Create rating";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div>
+        <form action="SaveRating" method="post">
+            <label>Book ID</label>
+            <input type="text" name="id_book" placeholder="id_book" />
+            <br />
+            <label>User ID</label>
+            <input type="text" name="id_user" placeholder="id_user" />
+            <br />
+            <label>Rating</label>
+            <input type="text" name="rating" placeholder="rating" />
+            <br />
+            <input type="submit" value="Save rating" />
+        </form>
+    </div>
+}
+else if (Model.ID_user == 0)
+{
+    <div>
+        <form action="SaveRating" method="post">
+            <label hidden="hidden">Book ID</label>
+            <input hidden="hidden" type="text" name="id_book" placeholder="id_book" value="@Model.ID_book" />
+            <br />
+            <label>User ID</label>
+            <input type="text" name="id_user" placeholder="id_user" />
+            <br />
+            <label>Rating</label>
+            <input type="text" name="rating" placeholder="rating" value="@Model.Rating" />
+            <br />
+            <input type="submit" value="Save rating" />
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <form action="SaveRating" method="post">
+            <label hidden="hidden">Book ID</label>
+            <input hidden="hidden" type="text" name="id_book" placeholder="id_book" value="@Model.ID_book" />
+            <br />
+            <label hidden="hidden">User ID</label>
+            <input hidden="hidden" type="text" name="id_user" placeholder="id_user" value="@Model.ID_user" />
+            <br />
+            <label>Rating</label>
+            <input type="text" name="rating" placeholder="rating" value="@Model.Rating" />
+            <br />
+            <input type="submit" value="Save rating" />
+        </form>
+    </div>
+}

@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.Book
+
+@{
+    ViewBag.Title = "Add book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div>
+        <form action="SaveBook" method="post">
+            <label>Book ID</label>
+            <input type="text" name="id_book" placeholder="id_book" />
+            <br />
+            <label>Title</label>
+            <input type="text" name="title" placeholder="title" />
+            <br />
+            <label>Original title</label>
+            <input type="text" name="original_title" placeholder="original_title" />
+            <br />
+            <label>Author</label>
+            <input type="text" name="author" placeholder="author" />
+            <br />
+            <label>Date published</label>
+            <input type="date" name="date_published" placeholder="date_published" />
+            <br />
+            <label>Format</label>
+            <input type="text" name="format" placeholder="format" />
+            <br />
+            <label>Language</label>
+            <input type="text" name="language" placeholder="language" />
+            <br />
+            <label>Genre</label>
+            <input type="text" name="genre" placeholder="genre" />
+            <br />
+            <label>ISBN</label>
+            <input type="text" name="isbn" placeholder="isbn" />
+            <br />
+            <label>Number of pages</label>
+            <input type="text" name="number_of_pages" placeholder="number_of_pages" />
+            <br />
+            <label hidden="hidden">Rating</label>
+            <input hidden="hidden" type="text" name="rating" placeholder="rating" value="0" />
+            <br />
+            <input type="submit" value="Save book" />
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <form action="SaveBook" method="post">
+            <label hidden="hidden">Book ID</label>
+            <input hidden="hidden" type="text" name="id_book" placeholder="id_book" value="@Model.ID_book" />
+            <br />
+            <label>Title</label>
+            <input type="text" name="title" placeholder="title" value="@Model.Title" />
+            <br />
+            <label>Original title</label>
+            <input type="text" name="original_title" placeholder="original_title" value="@Model.Original_title" />
+            <br />
+            <label>Author</label>
+            <input type="text" name="author" placeholder="author" value="@Model.Author" />
+            <br />
+            <label>Date published</label>
+            <input type="date" name="date_published" placeholder="date_published" value="@Model.Date_published" />
+            <br />
+            <label>Format</label>
+            <input type="text" name="format" placeholder="format" value="@Model.Format" />
+            <br />
+            <label>Language</label>
+            <input type="text" name="language" placeholder="language" value="@Model.Language" />
+            <br />
+            <label>Genre</label>
+            <input type="text" name="genre" placeholder="genre" value="@Model.Genre" />
+            <br />
+            <label>ISBN</label>
+            <input type="text" name="isbn" placeholder="isbn" value="@Model.ISBN" />
+            <br />
+            <label>Number of pages</label>
+            <input type="text" name="broj_stranica" placeholder="broj_stranica" value="@Model.Number_of_pages" />
+            <br />
+            <label>Rating</label>
+            <input type="text" name="rating" placeholder="rating" value="@Model.Rating" />
+            <br />
+            <input type="submit" value="Save book" />
+        </form>
+    </div>
+}

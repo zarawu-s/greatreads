@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.BookData
+
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column">
+    <h2>Showing books</h2>
+    <a asp-area="" asp-action="GoToCreateBook" asp-controller="BookData" style="margin-bottom:50px; max-width:200px;">
+        <button>Add book</button>
+    </a>
+
+    <table border="1" align="left" style="max-width:2200px; text-align:center;">
+        <thead>
+            <tr>
+                <td width="200">Book ID</td>
+                <td width="200">Title</td>
+                <td width="200">Original title</td>
+                <td width="200">Author</td>
+                <td width="300">Date published</td>
+                <td width="200">Format</td>
+                <td width="200">Language</td>
+                <td width="200">Genre</td>
+                <td width="200">ISBN</td>
+                <td width="200">Number of pages</td>
+                <td width="200">Rating</td>
+                <td width="200"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>@book.ID_book</td>
+                    <td>@book.Title</td>
+                    <td>@book.Original_title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Date_published</td>
+                    <td>@book.Format</td>
+                    <td>@book.Language</td>
+                    <td>@book.Genre</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.Number_of_pages</td>
+                    <td>@book.Rating</td>
+                    <td>
+                        <form action="DeleteBook" method="post">
+                            <input type="text" name="id_book" placeholder="id_book" value="@book.ID_book" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Delete book" />
+                        </form>
+                        <form action="UpdateBook" method="post">
+                            <input type="text" name="id_book" placeholder="id_book" value="@book.ID_book" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Edit book" />
+                        </form>
+                        <form asp-action="GoToCreateRating" method="post" asp-controller="UserRatingsData">
+                            <input type="text" name="id_book" placeholder="id_book" value="@book.ID_book" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Rate book" />
+                        </form>
+                        <form asp-action="GoToAddToShelf" method="post" asp-controller="Shelf">
+                            <input type="text" name="id_book" placeholder="id_book" value="@book.ID_book" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Add to shelf" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

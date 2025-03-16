@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.AuthorBooksData
+
+@{
+    ViewBag.Title = "Authors and books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column">
+    <h2>Showing authors and books</h2>
+    <a asp-area="" asp-action="GoToCreateAuthorBook" asp-controller="AuthorBooksData" style="margin-bottom:50px; max-width:200px;">
+        <button>Add author\'s book</button>
+    </a>
+
+    <table border="1" align="left" style="max-width:800px; text-align:center;">
+        <thead>
+            <tr>
+                <td width="200">Book ID</td>
+                <td width="200">Author ID</td>
+                <td width="200">Title</td>
+                <td width="200"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var authorbooks in Model.AuthorBooks)
+            {
+                <tr>
+                    <td>@authorbooks.ID_book</td>
+                    <td>@authorbooks.ID_author</td>
+                    <td>@authorbooks.Title</td>
+                    <td>
+                        <form action="DeleteAuthorBook" method="post">
+                            <input type="text" name="id_book" placeholder="id_book" value="@authorbooks.ID_book" hidden="hidden" />
+                            <input type="text" name="id_author" placeholder="id_author" value="@authorbooks.ID_author" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Delete author\'s book" />
+                        </form>
+                        <form action="GoToCreateAuthorBook" method="post">
+                            <input type="text" name="id_book" placeholder="id_book" value="@authorbooks.ID_book" hidden="hidden" />
+                            <input type="text" name="id_author" placeholder="id_author" value="@authorbooks.ID_author" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Edit author\'s book" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

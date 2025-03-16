@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model greatreads.Models.ShelfData
+
+@{
+    ViewBag.Title = "Shelves";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column">
+    <h2>Shelves list</h2>
+    <a asp-area="" asp-action="GoToCreateShelf" asp-controller="Shelf" style="margin-bottom:50px; max-width:200px;">
+        <button>Add shelf</button>
+    </a>
+
+    <table border="1" align="left" style="max-width:800px">
+        <thead>
+            <tr>
+                <td width="200">Shelf ID</td>
+                <td width="200">Name</td>
+                <td width="200">Number of books</td>
+                <td width="200"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shelf in Model.Shelves)
+            {
+                <tr>
+                    <td>@shelf.ID_shelf</td>
+                    <td>@shelf.Name</td>
+                    <td>@shelf.Number_of_books</td>
+                    <td class="flex-row" style="display:flex">
+                        <form action="DeleteShelf" method="post" style="display:flex">
+                            <input type="text" name="id_shelf" placeholder="id_shelf" value="@shelf.ID_shelf" hidden="hidden" />
+                            <input type="submit" value="Delete shelf" />
+                        </form>
+                        <form action="EditShelf" method="post" style="display:flex">
+                            <input type="text" name="id_shelf" placeholder="id_shelf" value="@shelf.ID_shelf" hidden="hidden" />
+                            <input type="submit" value="Edit shelf" />
+                        </form>
+                        <form action="DisplayShelf" method="get" style="display:flex">
+                            <input type="text" name="id_shelf" placeholder="id_shelf" value="@shelf.ID_shelf" hidden="hidden" />
+                            <input type="submit" value="Show shelf" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

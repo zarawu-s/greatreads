@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model int
+
+@{
+    ViewBag.Title = "Add book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex; flex-direction:column">
+    <h2 style="margin-bottom:50px;">Add book to the author</h2>
+    <form asp-action="SaveAuthorsBook" asp-controller="AuthorBooksData" method="post">
+        <label style="margin-right:10px;">Book ID</label>
+        <input type="text" name="id_author" placeholder="id_author" value="@Model" hidden="hidden" />
+        <input type="text" name="id_book" placeholder="id_book" />
+        <input type="submit" value="Add book to the author" />
+    </form>
+</div>

@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model greatreads.Models.UserData
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="display:flex; flex-direction:column">
+    <h1>Showing users</h1>
+    <a asp-area="" asp-action="GoToCreateUser" asp-controller="User" style="margin-bottom:50px; max-width:200px;">
+        <button>Add user</button>
+    </a>
+    <table border="1" align="left" style="max-width:1600px; text-align:center;">
+        <thead>
+
+            <tr>
+                <td width="200">User ID</td>
+                <td width="200">Name</td>
+                <td width="200">Date of birth</td>
+                <td width="200">Email</td>
+                <td width="300">Username</td>
+                <td width="200">Password</td>
+                <td width="200">Gender</td>
+
+                <td width="200"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.ID_user</td>
+                    <td>@user.Name_Surname</td>
+                    <td>@user.Date_of_birth</td>
+                    <td>@user.Email</td>
+                    <td>@user.Username</td>
+                    <td>@user.Password.GetHashCode()</td>
+                    <td>@user.Gender</td>
+                    <td>
+                        <form action="DeleteUser" method="post">
+                            <input type="text" name="id_user" placeholder="id_user" value="@user.ID_user" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Delete user" />
+                        </form>
+                        <form action="UpdateUser" method="post">
+                            <input type="text" name="id_user" placeholder="id_user" value="@user.ID_user" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Edit user" />
+                        </form>
+                        <form action="ShowShelves" method="get">
+                            <input type="text" name="id_user" placeholder="id_user" value="@user.ID_user" hidden="hidden" />
+                            <input style="width:100%" type="submit" value="Show shelves" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
