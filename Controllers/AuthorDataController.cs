@@ -15,10 +15,7 @@ namespace greatreads.Controllers
                 var cluster = Cluster.Builder().AddContactPoint("127.0.0.1").Build();
                 session = cluster.Connect("greatreads");
             }
-            catch (Exception e)
-            {
-                throw;
-            }
+            catch (Exception) { }
         }
 
         public IActionResult DisplayAuthorData()
@@ -27,7 +24,7 @@ namespace greatreads.Controllers
             return View(ad);
         }
 
-        public IActionResult CreateAuthor(int id_author)
+        public IActionResult GoToCreateAuthor(int id_author)
         {
             if (id_author != 0)
             {
@@ -50,8 +47,7 @@ namespace greatreads.Controllers
                         tmpObj.Rating = result.GetValue<float>("rating");
                     }
                 }
-                catch (Exception e)
-                { }
+                catch (Exception) { }
 
                 return View(tmpObj);
             }
@@ -108,8 +104,7 @@ namespace greatreads.Controllers
                                 ", " + tmpObj.Rating +
                                 ", \'" + tmpObj.Biography + "\');");
             }
-            catch (Exception e)
-            { }
+            catch (Exception) { }
 
             return RedirectToAction("DisplayAuthorData");
         }
@@ -119,7 +114,7 @@ namespace greatreads.Controllers
             return RedirectToAction("CreateAuthor", new { id_author = id_author });
         }
 
-        public IActionResult AddAuthorBook(int id_author)
+        public IActionResult AddAuthorsBook(int id_author)
         {
             return View(id_author);
         }
