@@ -25,7 +25,7 @@ namespace greatreads.Controllers
                 sd = new ShelfData();
             else 
                 sd = new ShelfData(id_user);
-                return View();
+                return View(sd);
         }
 
         public IActionResult DisplayShelf(int id_shelf)
