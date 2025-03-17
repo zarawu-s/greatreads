@@ -1,0 +1,45 @@
+Command for creating keyspace:
+create keyspace greatreads={'class':'SimpleStrategy','replication_factor': 3};
+	
+Creating tables:
+create table users(id_user int PRIMARY KEY, 
+	name_surname text, 
+	username text, 
+	password text, 
+	email text,
+	date_of_birth date,
+	gender text
+);
+
+create table authors(id_author int PRIMARY KEY,
+	name_surname text,
+	date_of_birth date,
+	date_of_death date,
+	country text,
+	biography text,
+	number_of_books int,
+	rating float
+);
+
+create table shelves(id_shelf int PRIMARY KEY,
+	name text,
+	number_of_books int
+);
+
+create table books(id_book int PRIMARY KEY,
+	title text,
+	original_title text,
+	author text,
+	number_of_pages int, 
+	format text, 
+	date_published date,
+	language text,
+	rating float,
+	genre text,
+	isbn text
+);
+
+create table shelfbooks();
+create table userratings();
+create table authorbooks();
+
