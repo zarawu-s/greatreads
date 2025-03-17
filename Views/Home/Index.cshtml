@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+@{
+    ViewData["Title"] = "GreatReads";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="title">Greatreads</h1>
 </div>
+
+<div class="main-section">
+    <div class="nav-item section">
+        <a class="nav-link text-light" asp-area="" asp-controller="BookData" asp-action="DisplayBookData">BOOKS</a>
+    </div>
+    <div class="nav-item section">
+        <a class="nav-link text-light" asp-area="" asp-controller="ShelfData" asp-action="DisplayShelfData">SHELVES</a>
+    </div>
+    <div class="nav-item section">
+        <a class="nav-link text-light" asp-area="" asp-controller="AuthorData" asp-action="DisplayAuthorData">AUTHORS</a>
+    </div>
+    <div class="nav-item section">
+        <a class="nav-link text-light" asp-area="" asp-controller="UserData" asp-action="DisplayUserData">USERS</a>
+    </div>
+    <div class="nav-item section action">
+        <a class="nav-link text-light" asp-area="" asp-controller="UserRatingsData" asp-action="GoToCreateRating">RATE A BOOK</a>
+    </div>
+    <div class="nav-item section action">
+        <a class="nav-link text-light" asp-area="" asp-controller="ShelfData" asp-action="GoToAddToShelf">ADD TO SHELF</a>
+    </div>
+</div>
+
