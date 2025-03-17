@@ -18,5 +18,40 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #B4AF9F;
 }
+
+.title {
+}
+
+.main-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #B4AF9F;
+    margin: 15% auto 10px auto;
+    justify-content: space-around;
+}
+
+.section {
+    margin: 10px 0 10px 0;
+    background-color: #423745;
+    height: 40px;
+    min-width: 40%;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size-adjust: 0.5;
+}
+
+    .section:hover {
+        background-color: #897290;
+    }
+
+.section.action {
+    background-color: #627D77;
+}
+
+    .section.action:hover {
+        background-color: #a9b8bc;
+    }
