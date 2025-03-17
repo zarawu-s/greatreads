@@ -39,7 +39,7 @@ namespace greatreads.Models
                     tmpObj.Date_of_birth = result.GetValue<LocalDate>("date_of_birth");
                     tmpObj.Name_Surname = result.GetValue<string>("name_surname");
                     tmpObj.Password = result.GetValue<string>("password");
-                    tmpObj.Gender = result.GetValue<string>("pol");
+                    tmpObj.Gender = result.GetValue<string>("gender");
                     tmpObj.Username = result.GetValue<string>("username");
 
                     Users.Add(tmpObj);
