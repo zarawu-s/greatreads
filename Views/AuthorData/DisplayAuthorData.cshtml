@@ -6,12 +6,12 @@
 
 @{
     ViewBag.Title = "List of Authors";
-    Layout = "~Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div style="display:flex; flex-direction:column;">
     <h2>List of Authors</h2>
-    <a asp-area="" asp-action="CreateAuthor" asp-controller="AuthorData" style="margin-bottom:50px; max-width:200px;">
+    <a asp-area="" asp-action="GoToCreateAuthor" asp-controller="AuthorData" style="margin-bottom:50px; max-width:200px;">
         <button>Add author</button>
     </a>
 
