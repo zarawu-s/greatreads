@@ -39,7 +39,20 @@ create table books(id_book int PRIMARY KEY,
 	isbn text
 );
 
-create table shelfbooks();
-create table userratings();
-create table authorbooks();
+create table shelfbooks(id_book int PRIMARY KEY,
+	id_shelf int
+);
+
+create table usershelves(id_shelf int PRIMARY KEY,
+	id_user int
+);
+
+create table userratings(id_book_user int PRIMARY KEY, 
+	id_book int, 
+	id_user int, 
+	rating int
+);
+create table authorbooks(id_book int PRIMARY KEY,
+	id_author int
+);
 
